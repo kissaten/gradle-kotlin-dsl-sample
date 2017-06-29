@@ -20,7 +20,7 @@ class HelloWorld() : HttpServlet() {
 
 @Throws(Exception::class)
 fun main(args: Array<String>) {
-    val port = System.getenv("PORT") == null ? "8080" : System.getenv("PORT")
+    val port = if (System.getenv("PORT") == null) "8080" else System.getenv("PORT")
     val server = Server(Integer.valueOf(port))
     val context = ServletContextHandler(ServletContextHandler.SESSIONS)
     context.setContextPath("/")
