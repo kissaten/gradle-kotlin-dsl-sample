@@ -16,3 +16,15 @@ dependencies {
 repositories {
     jcenter()
 }
+
+tasks {
+    "copyLibs"(Copy::class) {
+        into("$buildDir/libs")
+        from(configurations.compile)
+    }
+
+    "stage" {
+        dependsOn("build")
+        dependsOn("copyLibs")
+    }
+}
